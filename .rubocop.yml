@@ -1,0 +1,81 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - tmp/**/*
+    - bin/**/*
+    - node_modules/**/*
+  TargetRubyVersion: 2.7
+
+################
+# Style #
+################
+# %i が見にくいと思うので、配列記法に統一する
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+# For rubocop < 1.0.0
+Style/HashEachMethods:
+  Enabled: true
+
+# For rubocop < 1.0.0
+Style/HashTransformKeys:
+  Enabled: true
+
+# For rubocop < 1.0.0
+Style/HashTransformValues:
+  Enabled: true
+
+# 日本語コメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# ドキュメントの無い class / module を許可する
+Style/Documentation:
+  Enabled: false
+
+# 空メソッドが 1 行だと見にくいので複数行にする
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# if 文を rubocop:disable にすると end の後にコメントを書く必要があるため
+Style/CommentedKeyword:
+  Enabled: false
+
+################
+# Layout #
+################
+# コメントアウトは除外
+# 80 は短すぎるので 100 まで許容する
+Layout/LineLength:
+  IgnoredPatterns: ['\A( *)#']
+  Max: 100
+
+################
+# Metrics #
+################
+Metrics/BlockLength:
+  Exclude:
+    - config/environments/**/*
+    - spec/**/*
+
+################
+# Rails #
+################
+Rails/FilePath:
+  EnforcedStyle: arguments
+
+################
+# RSpec #
+################
+# 日本語でRspecを記述するので
+RSpec/ContextWording:
+  Enabled: false
+
+# デフォルト 3 では少ないので
+RSpec/NestedGroups:
+  Max: 5

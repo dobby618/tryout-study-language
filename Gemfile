@@ -29,6 +29,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # サンプルデータ作成
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -38,7 +41,24 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # 静的構文解析
+  gem 'rubocop', '~> 0.80.1', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+  # 静的パフォーマンス解析
+  gem 'bullet'
+end
+
+group :test do
+  gem 'rspec-rails'
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 2.15'
+  gem 'selenium-webdriver'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'rails-i18n' # 多言語対応
+gem 'haml-rails' # テンプレートエンジン
