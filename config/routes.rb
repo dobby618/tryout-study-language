@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :teachers
+  devise_for :admin_users, path: :admin
+
+  namespace :admin do
+    root to: 'teachers#index'
+    resources :teachers
+  end
 end
