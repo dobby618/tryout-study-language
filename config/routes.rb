@@ -1,11 +1,21 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :teachers
-  devise_for :admin_users, path: :admin
+  root 'home#show'
 
+  # For Teacher
+  devise_for :teachers
+  namespace :teachers do
+    root 'profile#show'
+    resource :profile, controller: :profile, only: [:show, :edit, :update]
+  end
+
+  # For Strudent
+
+  # For Admin
+  devise_for :admin_users, path: :admin
   namespace :admin do
-    root to: 'teachers#index'
+    root 'teachers#index'
     resources :teachers
   end
 end

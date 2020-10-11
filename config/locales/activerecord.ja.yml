@@ -1,0 +1,18 @@
+ja:
+  attributes: &timestamp
+    created_at: 作成日時
+    updated_at: 更新日時
+  activerecord:
+    models:
+      teacher: 講師
+    attributes: &activerecord_attributes
+      teacher:
+        email: メールアドレス
+        password: パスワード
+        name: 名前
+        avatar: プロフィール画像
+        profile: 自己紹介
+        <<: *timestamp
+  helpers:
+    label:
+     <<: *activerecord_attributes

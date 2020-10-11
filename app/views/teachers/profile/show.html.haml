@@ -1,0 +1,10 @@
+= link_to "編集", edit_teachers_profile_path, class: "btn btn-primary float-right"
+
+.card{ style: "width: 18rem;" }
+  = image_tag @teacher.avatar_url, class: "card-img-top" if @teacher.avatar
+  .card-body
+    %h5.card-title= @teacher.name
+    %p.card-text= nl2br @teacher.profile
+  %ul.list-group.list-group-flush
+    %li.list-group-item= @teacher.email
+    %li.list-group-item 教えることができる言語

@@ -1,0 +1,6 @@
+- if object.errors.any?
+  #error_explanation
+    %h2= "#{object.errors.count} 件のエラーにより保存できませんでした。"
+    %ul.alert.alert-danger
+      - object.errors.full_messages.each do |message|
+        %li= message

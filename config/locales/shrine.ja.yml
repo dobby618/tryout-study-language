@@ -1,0 +1,6 @@
+ja:
+  errors:
+    file:
+      max_size: "が大きすぎます（最大 %{max} です）"
+      mime_type_inclusion: "許可されていない MIME タイプのファイルをアップロードしています。許可される MIME タイプ：%{list}"
+      extension_inclusion: "許可されていない拡張子のファイルをアップロードしています。許可される拡張子：%{list}"
