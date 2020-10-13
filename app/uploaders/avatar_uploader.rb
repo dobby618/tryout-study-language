@@ -4,10 +4,10 @@ class AvatarUploader < BaseUploader
   plugin :determine_mime_type
   plugin :validation_helpers, default_messages: {
     max_size: ->(_max) { I18n.t('errors.file.max_size', max: '5 MB') },
-    mime_type_inclusion: lambda { |list|
+    mime_type_inclusion: ->(list) {
                            I18n.t('errors.file.mime_type_inclusion', list: list.join(', '))
                          },
-    extension_inclusion: lambda { |list|
+    extension_inclusion: ->(list) {
                            I18n.t('errors.file.extension_inclusion', list: list.join(', '))
                          }
   }

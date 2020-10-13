@@ -6,6 +6,7 @@ class Teacher < ApplicationRecord
 
   has_many :teaching, dependent: :destroy
   has_many :teaching_languages, through: :teaching, source: :language
+  has_many :schedules, dependent: :destroy
 
   with_options on: :update do
     validates :name, presence: true

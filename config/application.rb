@@ -39,7 +39,8 @@ module TryoutStudyLanguage
       g.integration_tool :rspec
       g.test_framework :rspec,
                        routing_specs: false,
-                       view_specs: false
+                       view_specs: false,
+                       request_specs: false
     end
 
     # チェックボックスとのときはレイアウトが崩れるのでエラーのクラスを付与させない
