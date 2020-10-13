@@ -26,7 +26,7 @@ module Teachers
     end
 
     def teacher_params
-      params.require(:teacher).permit(:email, :name, :avatar, :profile)
+      params.require(:teacher).permit(:email, :name, :avatar, :profile, teaching_language_ids: [])
     end
   end
 end

@@ -7,4 +7,4 @@
     %p.card-text= nl2br @teacher.profile
   %ul.list-group.list-group-flush
     %li.list-group-item= @teacher.email
-    %li.list-group-item 教えることができる言語
+    %li.list-group-item= @teacher.teaching_languages.pluck(:name).join('、')

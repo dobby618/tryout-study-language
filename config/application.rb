@@ -41,5 +41,15 @@ module TryoutStudyLanguage
                        routing_specs: false,
                        view_specs: false
     end
+
+    # チェックボックスとのときはレイアウトが崩れるのでエラーのクラスを付与させない
+    config.action_view.field_error_proc = proc do |html_tag, instance|
+      include ActionView::Helpers::TagHelper
+      if instance.is_a?(ActionView::Helpers::Tags::CheckBox)
+        tag.raw(html_tag)
+      else
+        tag.div(html_tag, class: 'field_with_errors')
+      end
+    end
   end
 end
