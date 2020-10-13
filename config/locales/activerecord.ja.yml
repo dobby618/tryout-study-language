@@ -5,6 +5,7 @@ ja:
   activerecord:
     models:
       teacher: 講師
+      language: 言語
     attributes: &activerecord_attributes
       teacher:
         email: メールアドレス
@@ -12,6 +13,10 @@ ja:
         name: 名前
         avatar: プロフィール画像
         profile: 自己紹介
+        teaching_language_ids: 担当言語
+        <<: *timestamp
+      language:
+        name: 言語
         <<: *timestamp
   helpers:
     label:

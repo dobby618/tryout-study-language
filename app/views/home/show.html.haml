@@ -5,6 +5,6 @@
       %p.lead.text-muted
         対応言語
         %br
-        ミャンマー語、ベトナム語
+        = Language.pluck(:name).join("、")
       %p
         = link_to "講師としてログイン", new_teacher_session_path, class: "btn btn-primary my-2"

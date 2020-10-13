@@ -17,6 +17,7 @@ RSpec.feature '講師プロフィールページ', type: :system, js: true do
 
   describe '講師プロフィールの更新' do
     background do
+      create(:language, name: 'ベトナム語')
       teacher_sign_in(email: 'teacher@example.com', password: 'password')
     end
 
@@ -30,6 +31,7 @@ RSpec.feature '講師プロフィールページ', type: :system, js: true do
         fill_in '名前', with: '太郎'
         fill_in '自己紹介', with: '初めまして。地元はタイでいまは〇〇大学に通って日本語を勉強しています。'
         attach_file 'プロフィール画像', Rails.root.join('spec', 'fixtures', 'profile_image.jpg').to_s
+        check 'ベトナム語'
 
         click_on 'Save'
 
@@ -39,6 +41,7 @@ RSpec.feature '講師プロフィールページ', type: :system, js: true do
         expect(page).to have_content '太郎'
         expect(page).to have_selector 'img.card-img-top'
         expect(page).to have_content '初めまして。地元はタイでいまは〇〇大学に通って日本語を勉強しています。'
+        expect(page).to have_content 'ベトナム語'
       end
     end
 
@@ -47,19 +50,21 @@ RSpec.feature '講師プロフィールページ', type: :system, js: true do
         visit edit_teachers_profile_path
 
         expect(page).to have_field 'メールアドレス', with: 'teacher@example.com'
+        expect(page).to have_field '名前', with: ''
+        expect(page).to have_field 'プロフィール画像', with: ''
+        expect(page).to have_field '自己紹介', with: ''
+        expect(page).to have_unchecked_field 'ベトナム語'
 
         fill_in 'メールアドレス', with: ''
-        fill_in '名前', with: ''
-        fill_in '自己紹介', with: ''
-        # attach_file 'プロフィール画像', '' # 画像を設定してないという意図を表したい
 
         click_on 'Save'
 
-        expect(page).to have_content '4 件のエラーにより保存できませんでした'
+        expect(page).to have_content '5 件のエラーにより保存できませんでした'
         expect(page).to have_content 'メールアドレスを入力してください'
         expect(page).to have_content '名前を入力してください'
         expect(page).to have_content 'プロフィール画像を入力してください'
         expect(page).to have_content '自己紹介を入力してください'
+        expect(page).to have_content '担当言語を入力してください'
       end
     end
   end

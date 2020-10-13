@@ -16,6 +16,14 @@
   .field
     = f.label :profile
     = f.text_area :profile
+  .field
+    = f.label :teaching_language_ids
+    = f.collection_check_boxes :teaching_language_ids, Language.all, :id, :name do |b|
+      .form-check
+        = b.check_box
+        = b.label do
+          = b.text
+
   .actions
     = f.submit "Save"
 
