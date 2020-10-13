@@ -2,16 +2,19 @@
 %html
   %head
     %meta{ content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
-    %title TryoutStudyLanguage
+    %title [講師]TryoutStudyLanguage
     = csrf_meta_tags
     = csp_meta_tag
 
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
     = stylesheet_pack_tag "application"
     = javascript_pack_tag "application", "data-turbolinks-track": "reload"
-  %body.container
-    - if notice.present?
-      .alert.alert-success{ role: "alert" }= notice
-    - if alert.present?
-      .alert.alert-danger{ role: "alert" }= alert
-    = yield
+  %body.container-full
+    = render "navbar"
+    .container.pt-3
+      - if notice.present?
+        .alert.alert-success{ role: "alert" }= notice
+      - if alert.present?
+        .alert.alert-danger{ role: "alert" }= alert
+      = yield
+

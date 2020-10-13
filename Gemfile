@@ -57,6 +57,7 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -66,3 +67,4 @@ gem 'administrate' # 管理画面
 gem 'devise'       # 認証
 gem 'haml-rails'   # テンプレートエンジン
 gem 'rails-i18n'   # 多言語対応
+gem 'shrine'       # ファイルアップロード

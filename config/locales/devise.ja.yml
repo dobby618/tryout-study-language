@@ -1,7 +1,7 @@
 # Additional translations at https://github.com/heartcombo/devise/wiki/I18n
 # Japanese https://github.com/tigrish/devise-i18n/blob/master/rails/locales/ja.yml
-en:
-  devise: &devise
+ja:
+  devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
       new:
@@ -114,6 +114,3 @@ en:
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
-  # admin_user:
-  #   <<: *devise
-  # 日本語の仕方が分からないなぁ。。要調整

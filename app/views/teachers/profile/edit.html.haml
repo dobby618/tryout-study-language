@@ -1,0 +1,22 @@
+= form_with model: @teacher, url: teachers_profile_path, local: true do |f|
+  = render "shared/error_messages", object: f.object
+
+  .field
+    = f.label :email
+    = f.email_field :email
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.hidden_field :avatar, value: @teacher.cached_avatar_data
+    = f.label :avatar
+    = f.file_field :avatar
+    - if @teacher.avatar
+      = image_tag @teacher.avatar_url, class: "img-fluid", width: "200px"
+  .field
+    = f.label :profile
+    = f.text_area :profile
+  .actions
+    = f.submit "Save"
+
+= link_to "Back", teachers_profile_path

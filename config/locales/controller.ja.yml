@@ -1,0 +1,8 @@
+ja:
+  controllers:
+    create:
+      success: "%{resource}を作成しました"
+    update:
+      success: "%{resource}を更新しました"
+    destroy:
+      success: "%{resource}を削除しました"

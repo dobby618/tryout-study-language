@@ -79,3 +79,16 @@ RSpec/ContextWording:
 # デフォルト 3 では少ないので
 RSpec/NestedGroups:
   Max: 5
+
+# 分かりやすさを優先して複数 expect を書く場合があるので。
+RSpec/MultipleExpectations:
+  Enabled: false
+
+# System spec で scenario を使いたい
+Capybara/FeatureMethods:
+  EnabledMethods: ['feature', 'background', 'scenario']
+
+# System spec は遅くなるので expect を複数書きたい
+RSpec/ExampleLength:
+  Exclude:
+    - spec/system/**/*

@@ -40,7 +40,6 @@ module TryoutStudyLanguage
       g.test_framework :rspec,
                        routing_specs: false,
                        view_specs: false
-      g.system_tests false
     end
   end
 end
