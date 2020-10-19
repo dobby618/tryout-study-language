@@ -15,7 +15,7 @@ module Teachers
         redirect_to teachers_profile_path,
                     notice: t('controllers.update.success', resource: Teacher.model_name.human)
       else
-        render 'edit'
+        render :edit
       end
     end
 

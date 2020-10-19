@@ -4,16 +4,17 @@
 module Teachers
   module Schedules
     class Form
-      attr_reader :start_date, :current_teacher, :registered_start_datetimes
+      include ActiveModel::Model
 
-      def initialize(start_date, current_teacher)
+      attr_reader :start_date, :language, :current_teacher, :registered_start_datetimes
+
+      def initialize(start_date, language, current_teacher)
         @start_date = valid_date?(start_date) ? start_date.to_date : default_schedule_date
+        @language = language
         @current_teacher = current_teacher
         @registered_start_datetimes = registered_schedules(@start_date).pluck(:start_at)
       end
 
-      # 聞きたいこと
-      # テストいる？ E2E でやってるし要らないかな？
       def save(params)
         ApplicationRecord.transaction do
           params.each do |date, hours|
@@ -54,7 +55,8 @@ module Teachers
         def registered_schedules(start_date)
           current_teacher
             .schedules
-            .where(start_at: start_date.beginning_of_day..start_date.since(6.days).end_of_day)
+            .where(language_id: language.id,
+                   start_at: start_date.beginning_of_day..start_date.since(6.days).end_of_day)
         end
 
         def valid_date?(start_date)
@@ -66,10 +68,12 @@ module Teachers
 
         def update(start_at, checked)
           if registered_start_datetimes.include?(start_at) && checked == '0' # 取り消し
-            schedule = current_teacher.schedules.find_by!(start_at: start_at)
+            schedule = current_teacher.schedules.find_by!(language_id: language.id,
+                                                          start_at: start_at)
             schedule.destroy
           elsif checked == '1'
-            current_teacher.schedules.find_or_create_by!(start_at: start_at)
+            current_teacher.schedules.find_or_create_by!(language_id: language.id,
+                                                         start_at: start_at)
           end
         end
     end

@@ -1,11 +1,16 @@
 .shadow-sm.p-3.mb-3.bg-white.rounded
   レッスンに入れる日時にチェックしてください
 
-= link_to "前の週", edit_teachers_schedules_path(start_date: @form.last_week_date), class: "float-left"
-= link_to "次の週", edit_teachers_schedules_path(start_date: @form.next_week_date), class: "float-right"
+%div.d-flex.justify-content-between
+  = link_to "前の週", edit_teachers_schedules_path(start_date: @form.last_week_date, language: @form.language.name)
+  = link_to "次の週", edit_teachers_schedules_path(start_date: @form.next_week_date, language: @form.language.name)
 
-= form_with url: teachers_schedules_path, method: :patch, local: true do |f|
+= form_with model: @form, scope: :schedules, url: teachers_schedules_path, method: :patch, local: true do |f|
   = hidden_field_tag :start_date, @form.start_date
+
+  = select_tag :language, 
+    options_from_collection_for_select(current_teacher.teaching_languages, :name, :name, @form.language.name),
+    { class: "form-select mb-2", data: { update_url: edit_teachers_schedules_path }}
   %table.table.table-bordered.text-center
     %thead
       %tr
@@ -18,5 +23,6 @@
           %th.text-center{ scope: "row" } #{hour}:00
           - @form.one_week_days.each do |date|
             %td
-              = f.check_box "schedules[#{date}][#{hour}]", { checked: @form.checked_schedule?(date: date, hour: hour) }
+              / HACK: 二次元配列の書き方が分からず、強引に配列作ってる感じになってしまった。。
+              = f.check_box "#{date}][#{hour}", { checked: @form.checked_schedule?(date: date, hour: hour) }
   = f.submit "更新する"
