@@ -21,12 +21,12 @@ module Teachers
 
     private
 
-    def set_teacher
-      @teacher = current_teacher
-    end
+      def set_teacher
+        @teacher = current_teacher
+      end
 
-    def teacher_params
-      params.require(:teacher).permit(:email, :name, :avatar, :profile, teaching_language_ids: [])
-    end
+      def teacher_params
+        params.require(:teacher).permit(:email, :name, :avatar, :profile, teaching_language_ids: [])
+      end
   end
 end

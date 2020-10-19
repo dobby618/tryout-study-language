@@ -46,6 +46,14 @@ Style/EmptyMethod:
 Style/CommentedKeyword:
   Enabled: false
 
+# private は一段深くインデントする
+Style/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+
+# Lamda が見にくいので。
+Style/Lambda:
+  EnforcedStyle: literal
+
 ################
 # Layout #
 ################

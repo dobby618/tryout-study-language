@@ -6,6 +6,7 @@ ja:
     models:
       teacher: 講師
       language: 言語
+      schedule: 予定
     attributes: &activerecord_attributes
       teacher:
         email: メールアドレス

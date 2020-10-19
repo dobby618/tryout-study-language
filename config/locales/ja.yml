@@ -1,0 +1,8 @@
+ja:
+  date:
+    formats:
+      system: "%Y-%m-%d"
+      schedule: "%-m/%-d(%a)"
+  time:
+    formats:
+      system: "%Y-%m-%d %-H:%M:%S"

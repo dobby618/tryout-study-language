@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_031719) do
+ActiveRecord::Schema.define(version: 2020_10_13_045658) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(version: 2020_10_13_031719) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "teacher_id", null: false
+    t.datetime "start_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["teacher_id"], name: "index_schedules_on_teacher_id"
+  end
+
   create_table "teachers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "name"
@@ -68,6 +76,7 @@ ActiveRecord::Schema.define(version: 2020_10_13_031719) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "schedules", "teachers"
   add_foreign_key "teachings", "languages"
   add_foreign_key "teachings", "teachers"
 end
