@@ -67,4 +67,7 @@ gem 'administrate' # 管理画面
 gem 'devise'       # 認証
 gem 'haml-rails'   # テンプレートエンジン
 gem 'rails-i18n'   # 多言語対応
-gem 'shrine'       # ファイルアップロード
+# ファイルアップロード
+gem 'image_processing'
+gem 'mini_magick'
+gem 'shrine'

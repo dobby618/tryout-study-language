@@ -1,7 +1,7 @@
 = link_to "編集", edit_teachers_profile_path, class: "btn btn-primary float-right"
 
-.card{ style: "width: 18rem;" }
-  = image_tag @teacher.avatar_url, class: "card-img-top" if @teacher.avatar
+.card{ style: "width: 200px;" }
+  = image_tag @teacher.avatar_url(:square), class: "card-img-top" if @teacher.avatar
   .card-body
     %h5.card-title= @teacher.name
     %p.card-text= nl2br @teacher.profile

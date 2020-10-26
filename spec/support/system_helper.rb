@@ -23,7 +23,7 @@ module SystemHelper
     expect(page).to have_current_path teachers_root_path
   end
 
-  def student_sign_in(email:, password:)
+  def student_sign_in(email:, password:, redirect_back: students_root_path)
     visit new_student_session_path
 
     fill_in 'メールアドレス', with: email
@@ -31,6 +31,6 @@ module SystemHelper
     click_on 'Log in'
 
     expect(page).to have_content 'ログインしました。'
-    expect(page).to have_current_path students_root_path
+    expect(page).to have_current_path redirect_back
   end
 end

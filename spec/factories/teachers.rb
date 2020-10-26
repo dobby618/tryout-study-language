@@ -2,10 +2,13 @@
 
 FactoryBot.define do
   factory :teacher do
-    sequence(:email) { |n| "test_#{n}@example.com" }
+    email { Faker::Internet.email }
     password { 'password' }
     name { Faker::Name.name }
-    # avatar # 画像は毎回生成したくないので初期値を設定しない
     profile { Faker::String.random }
+
+    trait :with_avatar do # 画像は毎回生成したくないので必要な時だけ設定してください。
+      avatar { File.new(Rails.root.join('spec', 'fixtures', 'profile_image.jpg')) }
+    end
   end
 end

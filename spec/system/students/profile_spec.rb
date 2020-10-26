@@ -9,7 +9,7 @@ RSpec.feature '受講生プロフィール画面', type: :system do
   end
 
   describe '受講生プロフィール画面の表示' do
-    scenario '講師プロフィールの更新' do
+    scenario '受講生のプロフィールが表示される' do
       # ログインしていない場合、ログイン画面に遷移すること
       expect(page).to have_current_path new_student_session_path
       # ログインする

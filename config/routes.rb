@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     }
     namespace :students do
       root 'profile#show'
+      resources :lessons, only: :index
     end
 
     # For Admin

@@ -14,10 +14,12 @@ Teacher.create(
 )
 
 Student.create(
+  name: '受講生①',
   email: 'student@example.com',
   password: 'password'
 )
 Student.create(
+  name: '受講生②',
   email: 'student2@example.com',
   password: 'password'
 )
