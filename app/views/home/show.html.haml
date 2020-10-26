@@ -6,5 +6,5 @@
         対応言語
         %br
         = Language.pluck(:name).join("、")
-      %p
-        = link_to "講師としてログイン", new_teacher_session_path, class: "btn btn-primary my-2"
+      %p= link_to "講師としてログイン", new_teacher_session_path, class: "btn btn-primary my-2"
+      %p= link_to "受講生としてログイン", new_student_session_path, class: "btn btn-primary my-2"

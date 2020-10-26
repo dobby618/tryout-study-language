@@ -8,11 +8,17 @@ Rails.application.routes.draw do
     devise_for :teachers
     namespace :teachers do # namespace は単数形でも良かったかもな。
       root 'profile#show'
-      resource :profile, controller: :profile, only: [:show, :edit, :update]
+      resource :profile, controller: :profile, only: [:edit, :update]
       resource :schedules, only: [:edit, :update]
     end
 
     # For Student
+    devise_for :students, controllers: {
+      registrations: 'students/registrations'
+    }
+    namespace :students do
+      root 'profile#show'
+    end
 
     # For Admin
     devise_for :admin_users, path: :admin

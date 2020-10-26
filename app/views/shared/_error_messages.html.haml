@@ -1,6 +1,6 @@
 - if object.errors.any?
   #error_explanation
-    %h2= "#{object.errors.count} 件のエラーにより保存できませんでした。"
+    %h2= I18n.t("errors.messages.not_saved", count: object.errors.count)
     %ul.alert.alert-danger
       - object.errors.full_messages.each do |message|
         %li= message
