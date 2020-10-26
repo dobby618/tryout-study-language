@@ -71,11 +71,17 @@ Metrics/BlockLength:
     - config/environments/**/*
     - spec/**/*
 
+Metrics/AbcSize:
+  Max: 20
+
 ################
 # Rails #
 ################
 Rails/FilePath:
   EnforcedStyle: arguments
+
+Rails/NotNullColumn:
+  Enabled: false
 
 ################
 # RSpec #
