@@ -12,7 +12,7 @@ module Teachers
 
     def update
       if @teacher.update(teacher_params)
-        redirect_to teachers_profile_path,
+        redirect_to teachers_root_url,
                     notice: t('controllers.update.success', resource: Teacher.model_name.human)
       else
         render :edit

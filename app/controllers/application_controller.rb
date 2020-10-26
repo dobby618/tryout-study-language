@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
           admin_root_path
         when Teacher
           teachers_root_path
+        when Student
+          students_root_path
         else
           root_path
         end

@@ -3,10 +3,10 @@
 
   .field
     = f.label :email
-    = f.email_field :email
+    = f.email_field :email, class: "form-control"
   .field
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, class: "form-control"
   .field
     = f.hidden_field :avatar, value: @teacher.cached_avatar_data
     = f.label :avatar
@@ -15,13 +15,13 @@
       = image_tag @teacher.avatar_url, class: "img-fluid", width: "200px"
   .field
     = f.label :profile
-    = f.text_area :profile
+    = f.text_area :profile, class: "form-control"
   .field
     = f.label :teaching_language_ids
     = f.collection_check_boxes :teaching_language_ids, Language.all, :id, :name do |b|
       .form-check
-        = b.check_box
-        = b.label do
+        = b.check_box class: "form-check-input"
+        = b.label class: "form-check-label" do
           = b.text
 
   .actions

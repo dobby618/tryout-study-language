@@ -1,24 +1,8 @@
-# README
+# 概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+言語学習マッチングサービス（Ruby on Rails の学習用）です。
 
-Things you may want to cover:
+# 推奨環境
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Ruby 2.7.2
+- MySQL 5.7

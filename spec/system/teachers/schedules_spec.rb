@@ -16,7 +16,7 @@ RSpec.feature '講師スケジュールの登録', type: :system, js: true do
       visit edit_teachers_schedules_path
     end
 
-    it '担当言語に合わせて今日から1週間分の日付と 7:00-22:00 までの時間帯、日付と時間帯の総当たりのチェックボックスが表示される' do
+    scenario '担当言語に合わせて今日から1週間分の日付と 7:00-22:00 までの時間帯、日付と時間帯の総当たりのチェックボックスが表示される' do
       # ログインしていない場合、ログインページに遷移すること
       expect(page).to have_current_path(new_teacher_session_path)
       # ログインする
@@ -56,7 +56,7 @@ RSpec.feature '講師スケジュールの登録', type: :system, js: true do
       visit edit_teachers_schedules_path
     end
 
-    it '次の週、前の週に移動できる' do
+    scenario '次の週、前の週に移動できる' do
       expect(page).to have_link('次の週')
       click_on '次の週'
       next_week = current_date.since(7.days).to_date
@@ -81,7 +81,7 @@ RSpec.feature '講師スケジュールの登録', type: :system, js: true do
       visit edit_teachers_schedules_path
     end
 
-    it '講師が複数の言語のスケジュールを登録する、登録を取り消す' do
+    scenario '講師が複数の言語のスケジュールを登録する、登録を取り消す' do
       # ミャンマー後のスケジュールを登録する
       expect(page).to have_select('language', selected: 'ミャンマー語')
       ## 全てのスケジュールにチェックを付ける

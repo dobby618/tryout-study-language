@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature '講師プロフィールページ', type: :system, js: true do
+RSpec.feature '講師プロフィール画面', type: :system do
   background do
     create(:admin_user, email: 'admin@example.com', password: 'password')
     admin_sign_in(email: 'admin@example.com', password: 'password')
@@ -12,7 +12,7 @@ RSpec.feature '講師プロフィールページ', type: :system, js: true do
     fill_in 'メールアドレス', with: 'teacher@example.com'
     fill_in 'パスワード', with: 'password'
     click_on '登録する'
-    expect(page).to have_content('Teacherを作成しました。')
+    expect(page).to have_content 'Teacherを作成しました。'
   end
 
   describe '講師プロフィールの更新' do
@@ -22,7 +22,7 @@ RSpec.feature '講師プロフィールページ', type: :system, js: true do
     end
 
     context '入力内容が有効な場合' do
-      scenario '更新に成功し、講師プロフィールページを表示する' do
+      scenario '更新に成功し、講師プロフィール画面を表示する' do
         visit edit_teachers_profile_path
 
         expect(page).to have_field 'メールアドレス', with: 'teacher@example.com'
@@ -35,7 +35,7 @@ RSpec.feature '講師プロフィールページ', type: :system, js: true do
 
         click_on 'Save'
 
-        expect(page).to have_current_path teachers_profile_path
+        expect(page).to have_current_path teachers_root_path
         expect(page).to have_content '講師を更新しました'
         expect(page).to have_content 'changed_teacher@example.com'
         expect(page).to have_content '太郎'
