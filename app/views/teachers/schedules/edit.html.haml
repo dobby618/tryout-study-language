@@ -24,6 +24,6 @@
           %th.text-center{ scope: "row" } #{hour}:00
           - @form.one_week_days.each do |date|
             %td
-              / HACK: 二次元配列の書き方が分からず、強引に配列作ってる感じになってしまった。。
-              = f.check_box "#{date}][#{hour}", { checked: @form.checked_schedule?(date: date, hour: hour) }
+              = f.fields_for date.to_s do |date_f|
+                = date_f.check_box hour, { checked: @form.checked_schedule?(date: date, hour: hour) }
   = f.submit "更新する"

@@ -60,9 +60,11 @@ module Teachers
         end
 
         def valid_date?(start_date)
+          return false unless start_date.is_a?(String)
+
           year, month, day = start_date.split('-').map(&:to_i)
           Date.valid_date?(year, month, day)
-        rescue StandardError
+        rescue ArgumentError
           false
         end
 
