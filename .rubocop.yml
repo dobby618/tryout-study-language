@@ -46,10 +46,6 @@ Style/EmptyMethod:
 Style/CommentedKeyword:
   Enabled: false
 
-# private は一段深くインデントする
-Style/IndentationConsistency:
-  EnforcedStyle: indented_internal_methods
-
 # Lamda が見にくいので。
 Style/Lambda:
   EnforcedStyle: literal
@@ -62,6 +58,10 @@ Style/Lambda:
 Layout/LineLength:
   IgnoredPatterns: ['\A( *)#']
   Max: 100
+
+# private は一段深くインデントする
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
 
 ################
 # Metrics #
