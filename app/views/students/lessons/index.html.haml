@@ -1,0 +1,20 @@
+.row#lessons{ data: { lessons_url: students_lessons_path } }
+  .col= select_tag :start_date, options_for_select(@dates, @start_date),
+                                { class: "form-select mb-2" }
+  .col= select_tag :language, options_from_collection_for_select(@languages, :name, :name, @language.name),
+                              { class: "form-select mb-2" }
+
+.row.border-bottom.border-warning.text-center.mt-3
+  .col-3
+    %h5 時間帯
+  .col-9
+    %h5 講師
+- Schedule::SCHEDULABLE_HOUR_RANGE.each do |hour|
+  .row.border-bottom.py-3{ style: "height: 100px;" }
+    .col-3.text-center #{hour}:00
+    .col-9
+      - @schedules["#{hour}"]&.each do |teacher|
+        %figure.figure.text-center
+          = image_tag teacher.avatar_url(:square), class: "figure-img img-fluid", width: 50
+          %figcaption.figure-caption
+            #{teacher.name} 講師

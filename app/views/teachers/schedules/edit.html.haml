@@ -8,9 +8,10 @@
 = form_with model: @form, scope: :schedules, url: teachers_schedules_path, method: :patch, local: true do |f|
   = hidden_field_tag :start_date, @form.start_date
 
-  = select_tag :language, 
-    options_from_collection_for_select(current_teacher.teaching_languages, :name, :name, @form.language.name),
-    { class: "form-select mb-2", data: { update_url: edit_teachers_schedules_path }}
+  #schedules{ data: { schedules_url: edit_teachers_schedules_path } }
+    = select_tag :language, 
+      options_from_collection_for_select(current_teacher.teaching_languages, :name, :name, @form.language.name),
+      { class: "form-select mb-2" }
   %table.table.table-bordered.text-center
     %thead
       %tr

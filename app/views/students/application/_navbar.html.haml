@@ -7,5 +7,7 @@
       %ul.navbar-nav.mr-auto.mb-2.mb-lg-0
         %li.nav-item
           = link_to "Profile", students_root_path, class: "nav-link"
+        %li.nav-item
+          = link_to "Lessons", students_lessons_path, class: "nav-link"
       %span.navbar-text
         = link_to "ログアウト", destroy_student_session_path, method: :delete, class: "nav-link"

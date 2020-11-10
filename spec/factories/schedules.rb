@@ -3,6 +3,7 @@
 FactoryBot.define do
   factory :schedule do
     teacher
-    start_at { Time.current }
+    language
+    start_at { I18n.l(Time.current, format: :truncate_by_hour) }
   end
 end

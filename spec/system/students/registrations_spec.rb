@@ -14,9 +14,9 @@ RSpec.feature '受講生のユーザ登録', type: :system do
         fill_in '名前', with: 'あや'
         fill_in 'パスワード', with: 'password'
         fill_in 'パスワード（確認）', with: 'password'
-  
+
         click_on 'Sign up'
-  
+
         expect(page).to have_content 'アカウント登録が完了しました。'
         expect(page).to have_content 'student@example.com'
         expect(page).to have_content 'あや'

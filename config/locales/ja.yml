@@ -6,3 +6,5 @@ ja:
   time:
     formats:
       system: "%Y-%m-%d %-H:%M:%S"
+      only_hour: "%-H"
+      truncate_by_hour: "%Y-%m-%d %-H:00:00"
